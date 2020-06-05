@@ -11,7 +11,5 @@ Looking at this file, it's a memory dump and has various files/programs that wer
 From there, I looked for "JFIF" and located the JPG file in memory. Copied the JPEG file out into a new file and was able to open/view the key.
 
 ```
-
-```
 Tacocon{Th!s~!s~Poof!~H0W~3L$e~W0u7D~!~Get~7hi$~Ph070??}
 ```
