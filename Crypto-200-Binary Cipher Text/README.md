@@ -1,0 +1,42 @@
+# Binary Cipher Text??
+
+> It looks like the Chefs have moved to a different form of communication.
+
+> We were able to intercept these two strings:
+
+> Snippet 1: 0000000000000000000000000000000000010000001110110000111100011000001101110001110000100110001110000000110000011010001101100010110000000010000010100001101100010110001100000011010100001100001111000001011000110001001011000000011001010000010011000110101100011100
+
+> Snippet 2: 0101010001100001011000110110111101110011
+
+> Can you use these to figure out what they were saying?
+
+The above was a little challenging simply because I wrote it incorrectly to begin with when I wrote a little Python script to solve this. This is an XOR where the first snippit is the key, encoded by the second snippet.
+
+To solve this, I found it easiest to simply interact with the numbers instead of converting it to binary and dealing with binary data.
+
+```
+#!python
+
+a = '0000000000000000000000000000000000010000001110110000111100011000001101110001110000100110001110000000110000011010001101100010110000000010000010100001101100010110001100000011010100001100001111000001011000110001001011000000011001010000010011000110101100011100'
+b = '0101010001100001011000110110111101110011'
+
+for i in range(0, len(a)):
+    if a[i] == '0' and b[i % len(b)] == '0':
+        print('0', end='')
+    elif a[i] == '1' and b[i % len(b)] == '1':
+        print('0', end='')
+    else:
+        print('1', end='')
+print('')
+```
+
+Resulting in a binary string of
+```
+0101010001100001011000110110111101100011011011110110111001111011010110000110111101110010010110010110111101110101010001010111100001100011011010010111010001100101011001000101010001101111010100110110010101100101010011010110010100111111001111110011111101111101
+```
+
+I then used one of many free binary -> ascii converters online to come up with
+
+```
+Tacocon{XorYouExcitedToSeeMe???}
+```
